@@ -1,7 +1,7 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-	{"vol:"  , "amixer sget Master | awk -F\"[][]\" '/dB/ { print $2 } '", 0, 30 },
+	{"vol:"  , " pactl get-sink-volume @DEFAULT_SINK@ | awk '/front-left/ { print $5 }'", 0, 30 },
 	{"bat:"  , "cat /sys/class/power_supply/BAT1/capacity" , 60  , 0} ,
 	{"Mem:", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
 
